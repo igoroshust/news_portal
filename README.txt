@@ -1,19 +1,20 @@
-Commands to start a project:
-
+~~ Commands to start a project ~~:
 python -m venv venv
 venv\scripts\activate
 pip install -r requirements.txt
 cd project
 python manage.py runserver
 
-Login/logout:
+~~ Clear cache ~~:
+ctrl+shift+R
+ctrl+F5
 
+~~ Login/logout ~~:
 Sign up: http://127.0.0.1:8000/accounts/signup/
 Sign in: http://127.0.0.1:8000/accounts/login/
 Log Out: http://127.0.0.1:8000/accounts/logout/
 
-Email newsletter:
-
+~~ Email newsletter ~~:
 download redis: https://github.com/microsoftarchive/redis/releases
 start redis-server.exe (run as administartor)
 Terminal - Local (1): python manage.py runserver
