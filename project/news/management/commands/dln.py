@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.stdout.readable()
-        self.stdout.write('Выберите категорию, из которой хотите удалить статьи: ')
+        self.stdout.write('Выберите категорию, из которо хотите удалить статьи: ')
         lst = Category.objects.all()
         s = 1
         for i in lst:

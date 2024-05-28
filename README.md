@@ -25,4 +25,5 @@
 4. Terminal - Local (2): celery -A project worker -l INFO --pool=solo
 
 ~~ Terminal - Local (2) can use: celery -A project worker -l INFO -P eventlet
+
 5. Terminal - Local (3): celery -A project beat -l INFO
