@@ -16,7 +16,7 @@ class Command(BaseCommand):
             s += 1
 
         for key, value in di.items():
-            print(f'Нажмите "{key}" для категории "{value}"')
+            self.stdout.write(f'Нажмите "{key}" для категории "{value}"')
 
         answer = input(': ')
         for key, value in di.items():
