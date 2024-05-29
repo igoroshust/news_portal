@@ -27,7 +27,7 @@ class Command(BaseCommand):
                     Article.objects.filter(category_id=key).delete()
                     self.stdout.write(self.style.SUCCESS('Статьи успешно удалены!'))
                 elif choice == 'no':
-                    self.stdout.write(self.style.SUCCESS('Отказано в удалении!'))
+                    self.stdout.write(self.style.ERROR('Отказано в удалении!'))
                 else:
                     self.stdout.write('Только корректные значения!')
 
