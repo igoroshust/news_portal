@@ -24,6 +24,7 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('accounts/', include('allauth.urls')),
     path('test/', include('board.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
     # path('accounts/', include('accounts.urls')),
     # path('accounts/', include('django.contrib.auth.urls')),
     # path('pages/', include('django.contrib.flatpages.urls')),

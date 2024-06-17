@@ -1,0 +1,83 @@
+Создать пользователя:
+>>> user1 = User.objects.create_user(username='Igor')
+
+Посмотреть информацию о пользователе:
+>>> user1
+
+Создать автора:
+>>> Author.objects.create(authorUser=user1)
+
+Создать категорию:
+>>> Category.objects.create(categoryName='IT')
+
+Посмотреть наименование категории:
+>>> Category.objects.get(id=1).categoryName
+
+Создать посты (новость/статья):
+>>> author = Author.objects.get(id=1)
+>>> Post.objects.create(postAuthor=author, categoryType='NW', title='title_1', text='Lorem ipsum dolor sit amet')
+>>> Post.objects.create(postAuthor=author, categoryType='AR', title='title_2', text='Lorem ipsum dolor sit amet 2')
+
+Получить информацию о созданном посте:
+>>> Post.objects.get(id=1).categoryType
+>>> Post.objects.get(id=1).title
+>>> Post.objects.get(id=1).text
+
+Добавить категорию конкретному посту:
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+
+Посмотреть категорию поста:
+>>> Post.objects.get(id=1).get_categoryType_display()
+
+Оценить пост (лайк/дизлайк):
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).dislike()
+
+Создать комментарий:
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=1).authorUser, text='anytextbyauthor')
+
+Оценить комментарий (лайк/дизлайк):
+>>> Comment.objects.get(id=1).like()
+>>> Comment.objects.get(id=1).dislike()
+
+Посмотреть рейтинг комментария:
+>>> Comment.objects.get(id=1).rating
+
+Посмотреть рейтинг автора:
+>>> Author.objects.get(id=1).ratingAuthor
+
+Изменение рейтинга автора:
+>>> a = Author.objects.get(id=1)
+>>> a.update_rating()
+>>> a.ratingAuthor
+
+Определить лучшего автора (получить поле первого объекта):
+>>> info = Author.objects.order_by('-ratingAuthor')[:1]
+>>> for i in info:
+    f"Рейтинг лучшего пользователя: {i.ratingAuthor}"
+    f"Имя лучшего пользователя: {i.authorUser.username}"
+
+Получить отсортированный по убыванию список всех пользователей (по рейтингу):
+>>> info = Author.objects.order_by('-ratingAuthor')
+>>> for i in info:
+        f"Имя: {i.authorUser.username}, рейтинг: {i.ratingAuthor}"
+
+
+Вывести дату добавления, username автора, рейтинг, заголовок и превью лучшей статьи:
+>>> show_info = Post.objects.order_by('-rating')[:1]
+>>> for i in show_info:
+        f"Имя автора: {i.postAuthor.authorUser.username}"
+        f"Рейтинг: {i.rating}"
+        f"Превью: {i.preview()}"
+        f"Заголовок: {i.title}"
+        f"Текст: {i.text}"
+        f"-------------------------------"
+
+Вывести все комментарии к статье (дата, пользователь, рейтинг, текст):
+>>> get_info = Comment.objects.order_by('-rating')[:1]
+>>> for i in get_info:
+        f"Дата создания: {i.dateCreation}"
+        f"Имя: {i.commentUser}"
+        f"Рейтинг: {i.rating}"
+        f"Текст: {i.text}"
+        f"-------------------------------"

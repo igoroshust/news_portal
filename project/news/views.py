@@ -15,6 +15,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 
+from django.utils.translation import gettext
+
 # def index(request):
 #     return HttpResponse("Добро пожаловать!")
 
@@ -36,6 +38,8 @@ class NewsList(ListView):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset # добавляем в контекст объект фильтрации
         return context
+
+
 
 
 class NewsDetail(DetailView):

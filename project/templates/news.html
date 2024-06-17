@@ -1,4 +1,5 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
@@ -27,44 +28,44 @@
 {# Предоставление конкретных прав #}
 {% if perms.news.add_article %}
 <form>
-    <button formaction="{% url 'news_create' %}" style="border-radius: 5px;">Добавить статью</button>
+    <button formaction="{% url 'news_create' %}" style="border-radius: 5px;">{% trans 'Add article' %}</button>
 </form>
 <!--<a href="{% url 'news_create' %}">Добавить статью</a>-->
 {% endif %}
 <br />
 
-<h1>Все статьи</h1>
+<h1>{% trans 'All articles' %}</h1>
 <br>
 {% if news %}
 <table cellpadding="7">
     <tr>
-        <td><strong>Название</strong></td>
-        <td><strong>Текст</strong></td>
-        <td><strong>Дата публикации</strong></td>
+        <td><strong>{% trans 'Name' %}</strong></td>
+        <td><strong>{% trans 'Text' %}</strong></td>
+        <td><strong>{% trans 'Date' %}</strong></td>
         {% if perms.news.change_article or perms.news.delete_article %}
-        <td><strong>Действия</strong></td>
+        <td><strong>{% trans 'Actions' %}</strong></td>
         {% endif %}
     </tr>
     {% for article in news %}
     <tr>
-        <td><a href="http://127.0.0.1:8000/{{ article.id }}" style="text-decoration: none;">{{ article.name }}</a></td>
+        <td><a href="http://127.0.0.1:8000/{{ article.id }}" style="text-decoration: none; color: #28242c;">{{ article.name }}</a></td>
         <td>{{ article.text|censor|truncatechars:40 }}</td>
         <td>{{ article.date|date:"d-M-Y, H:i" }}</td>
         <td>
             {# Доступ для каждой ссылки проверяется отдельно #}
             {% if perms.news.change_article %}
-            <a href="{% url 'news_edit' pk=article.pk %}">Изменить</a>
+            <a href="{% url 'news_edit' pk=article.pk %}">{% trans 'Edit' %}</a>
             {% endif %}
             <span>|</span>
             {% if perms.news.delete_article %}
-            <a href="{% url 'news_delete' article.id %}">Удалить</a>
+            <a href="{% url 'news_delete' article.id %}">{% trans 'Delete' %}</a>
             {% endif %}
         </td>
     </tr>
     {% endfor %}
 </table>
 {% else %}
-<h3>Статей нет!</h3>
+<h3>{% trans 'Статей нет!' %}</h3>
 {% endif %}
 
 {# Информация о предыдущих страницах #}
