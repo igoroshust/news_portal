@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 18:13+0900\n"
+"POT-Creation-Date: 2024-06-17 18:54+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: .\fpages\admin.py:11
 msgid "Advanced options"
-msgstr ""
+msgstr "Расширенные настройки"
 
 #: .\templates\flatpages\default.html:44
 msgid "set"
@@ -61,8 +61,8 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: .\templates\news.html:68
-msgid "Статей нет!"
-msgstr ""
+msgid "No articles!"
+msgstr "Статей нет!"
 
 #: .\templates\news_create.html:10 .\templates\news_edit.html:10
 msgid "Save"
