@@ -8,7 +8,7 @@ from django.utils.translation import gettext as _
 
 class Category(models.Model):
     """Категория статей"""
-    name = models.CharField(max_length=100, default=0)
+    name = models.CharField(max_length=100)
     subscribers = models.ManyToManyField(User, related_name='categories')
 
     class Meta:

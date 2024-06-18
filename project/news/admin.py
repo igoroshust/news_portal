@@ -5,8 +5,6 @@ from modeltranslation.admin import TranslationAdmin # импортируем м�
 class CatAdmin(TranslationAdmin):
     model = Category
 
-class ArtAdmin(TranslationAdmin):
-    model = Article
 
 class ArticleAdmin(admin.ModelAdmin):
     """Настройка вывода информации в панели администратора"""
@@ -16,5 +14,8 @@ class ArticleAdmin(admin.ModelAdmin):
 
     search_filter = ('name', 'category__name', )
 
-admin.site.register(Article, ArticleAdmin)
+class ArtAdmin(ArticleAdmin, TranslationAdmin):
+    model = Article
+
+admin.site.register(Article, ArtAdmin)
 admin.site.register(Category)
