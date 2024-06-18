@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.core.cache import cache
 from django.utils.translation import gettext as _
 
+
 class Category(models.Model):
     """Категория статей"""
     name = models.CharField(max_length=100)
@@ -21,10 +22,10 @@ class Category(models.Model):
 
 class Article(models.Model):
     """Статья"""
-    name = models.CharField(max_length=68, unique=True, verbose_name='Название')
-    text = models.TextField(verbose_name='Текст')
-    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
-    category = models.ForeignKey(Category, null=True, default=None, on_delete=models.CASCADE, verbose_name='Категория')
+    name = models.CharField(max_length=68, unique=True, verbose_name=_('Name'))
+    text = models.TextField(verbose_name=_('Text'))
+    date = models.DateTimeField(auto_now_add=True, verbose_name=_('Date'))
+    category = models.ForeignKey(Category, null=True, default=None, on_delete=models.CASCADE, verbose_name=_('Category'))
 
     # def get_absolute_url(self):
     #     """Отображение конкретной страницы после создания товара"""
