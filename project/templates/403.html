@@ -1,6 +1,7 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 
 {% block content %}
-<h3>Ошибка 403</h3>
-<p>У вас нет доступа к данной странице...</p>
+<h3>{% trans '403 Error' %}</h3>
+<p>{% trans 'You do not have access to this page' %}</p>
 {% endblock content %}

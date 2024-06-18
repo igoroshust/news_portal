@@ -41,8 +41,13 @@
                                 </option>
                             {% endfor %}
                         </select>
-                        <input type="submit" value="{% trans 'set' %}">
+                        <input type="submit" value="{% trans 'translate' %}">
                     </form>
+                    {% for model in models %}
+                    <div class="model-class">
+                        {{ model.name }}
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </nav>
