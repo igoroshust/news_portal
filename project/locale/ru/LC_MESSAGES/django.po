@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-18 21:54+0900\n"
+"POT-Creation-Date: 2024-06-19 12:59+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,21 +24,21 @@ msgstr ""
 msgid "Advanced options"
 msgstr "Расширенные настройки"
 
-#: .\news\models.py:25 .\templates\news.html:42
+#: .\news\forms.py:15 .\news\models.py:25 .\templates\news.html:42
 msgid "Name"
 msgstr "Название"
 
-#: .\news\models.py:26 .\templates\news.html:43
+#: .\news\forms.py:16 .\news\models.py:26 .\templates\news.html:43
 msgid "Text"
 msgstr "Текст"
+
+#: .\news\forms.py:17 .\news\models.py:28
+msgid "Category"
+msgstr "Категория"
 
 #: .\news\models.py:27 .\templates\news.html:44
 msgid "Date"
 msgstr "Дата публикации"
-
-#: .\news\models.py:28
-msgid "Category"
-msgstr "Категория"
 
 #: .\templates\403.html:5
 msgid "403 Error"
@@ -102,6 +102,17 @@ msgstr "Подписаться"
 #: .\templates\subscriptions.html:18 .\templates\subscriptions.html:21
 msgid "Unsubscribe"
 msgstr "Отписаться"
+
+#~ msgid "name"
+#~ msgstr "Название"
+
+#~ msgid "text"
+#~ msgstr "Текст"
+
+#, fuzzy
+#~| msgid "Category"
+#~ msgid "category"
+#~ msgstr "Категория"
 
 #~ msgid "set"
 #~ msgstr "перевести"
