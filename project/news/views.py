@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from .models import Article, Category, Subscriber
 from .forms import NewsForm
 from .filters import NewsFilter
@@ -11,14 +12,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Exists, OuterRef
 from django.views.decorators.csrf import csrf_protect
-
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
+from django.utils.translation import gettext as _
+from django.utils.translation import activate, get_supported_language_variant
+import pytz # модуль для работы с часовыми поясами
 
-from django.utils.translation import gettext
-
-# def index(request):
-#     return HttpResponse("Добро пожаловать!")
 
 class NewsList(ListView):
     """Список статей"""
@@ -37,8 +36,14 @@ class NewsList(ListView):
         """Метод, позволяющий изменить набор данных, передаваемых в шаблон"""
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset # добавляем в контекст объект фильтрации
+        context['current_time'] = timezone.localtime(timezone.now()),
+        context['timezones'] = pytz.common_timezones
         return context
 
+    def post(self, request):
+        """Добавление часового пояса в сессию через пост-запрос, обработанный middleware"""
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
 
 
 

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 {% load i18n %}
+{% load tz %}
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        {% load static %}
         <title>NewsPortal</title>
+<!--        Тёмная/светлая тема в зависимости от времени (локализация)-->
+<!--            <style>-->
+<!--                 body {background-color: {% if current_time.hour >= 19 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};}-->
+<!--            </style>-->
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -26,7 +31,14 @@
                 <a class="navbar-brand" href="http://127.0.0.1:8000/">NewsPortal</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <form action="{% url 'set_language' %}" method="POST">
+
+                    {% for model in models %}
+                    <div class="model-class">
+                        {{ model.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <form action="{% url 'set_language' %}" method="POST">
                          {% csrf_token %}
                          <input type="hidden" name="next" value="{{ redirect_to }}">
 
@@ -43,12 +55,6 @@
                         </select>
                         <input type="submit" value="{% trans 'translate' %}">
                     </form>
-                    {% for model in models %}
-                    <div class="model-class">
-                        {{ model.name }}
-                    </div>
-                    {% endfor %}
-                </div>
             </div>
         </nav>
         <!-- Page content-->

@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.middlewares.TimezoneMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware', # статистические страницы
     'allauth.account.middleware.AccountMiddleware',
 ]
