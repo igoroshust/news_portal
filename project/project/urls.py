@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 # from news.views import index
 
 urlpatterns = [
@@ -25,6 +26,10 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('test/', include('board.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('openapi-docs/', TemplateView.as_view(
+        template_name='openapi-docs.html',
+        extra_context={'schema_url': 'openapi-schema'}),
+         name='openapi-docs'),
     # path('accounts/', include('accounts.urls')),
     # path('accounts/', include('django.contrib.auth.urls')),
     # path('pages/', include('django.contrib.flatpages.urls')),

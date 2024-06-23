@@ -1,0 +1,54 @@
+openapi: 3.0.2
+info:
+  title: 'Some application'
+  version: "0.1"
+paths:
+  /news/:
+    get:
+      operationId: NewsList
+      description: 'List of news'
+      parameters: []
+      responses:
+        '200':
+          content: 'Вот новости'
+          application/json:
+            schema:
+              type: array
+              items:
+                  $ref: '#/components/schemas/School'
+          description: 'Новости'
+      tags:
+        - news
+
+    post:
+      operationId: NewsCreate
+      description: 'Create news'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/School'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/School'
+          description: 'Create news'
+      tags:
+        - news
+
+components:
+  schemas:
+    School:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+      required:
+        - name
