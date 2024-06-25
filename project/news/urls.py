@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import (NewsList, NewsDetail, NewsSearch, NewsCreate, NewsUpdate, NewsDelete, subscriptions, CategoryListView, subscribe)
+from .views import (ArticleViewset, CategoryViewset, NewsList, NewsDetail, NewsSearch, NewsCreate, NewsUpdate, NewsDelete, subscriptions, CategoryListView, subscribe)
 from django.views.decorators.cache import cache_page
 
 

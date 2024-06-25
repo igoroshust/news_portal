@@ -26,6 +26,7 @@ class Article(models.Model):
     text = models.TextField(verbose_name=_('Text'))
     date = models.DateTimeField(auto_now_add=True, verbose_name=_('Date'))
     category = models.ForeignKey(Category, null=True, default=None, on_delete=models.CASCADE, verbose_name=_('Category'))
+    is_active = models.BooleanField(default=True)
 
     # def get_absolute_url(self):
     #     """Отображение конкретной страницы после создания товара"""

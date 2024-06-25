@@ -1,22 +1,22 @@
 openapi: 3.0.2
 info:
-  title: 'Some application'
+  title: 'News Portal application'
   version: "0.1"
 paths:
   /news/:
     get:
       operationId: NewsList
-      description: 'List of news'
+      description: 'News list'
       parameters: []
       responses:
         '200':
-          content: 'Вот новости'
+          content: ''
           application/json:
             schema:
               type: array
               items:
-                  $ref: '#/components/schemas/School'
-          description: 'Новости'
+                  $ref: '#/components/schemas/News'
+          description: ''
       tags:
         - news
 
@@ -28,20 +28,74 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/School'
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
       responses:
         '201':
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/School'
-          description: 'Create news'
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+        - news
+
+  /news/{id}/:
+    put:
+      operationId: NewsUpdate
+      description: 'Update news'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this news.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/News'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/News'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/News'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/News'
+          description: ''
+      tags:
+        - news
+
+    delete:
+      operationId: NewsDelete
+      description: 'Delete news'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: A unique integer value identifying this news.
+          schema:
+            type: string
+      responses:
+        '204':
+          description: ''
       tags:
         - news
 
 components:
   schemas:
-    School:
+    News:
       type: object
       properties:
         id:
