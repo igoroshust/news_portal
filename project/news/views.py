@@ -1,5 +1,6 @@
 import json
 
+import django_filters
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.http import HttpResponse
@@ -106,7 +107,7 @@ class ArticleViewset(viewsets.ModelViewSet):
 class CategoryViewset(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    filter_backends = ['django_filters.rest_framework.DjangoFilterBackend']
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
     filterset_fields = ["name", "article_id"]
 
 class NewsList(ListView):
